@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Penelope Beauty Studio - About Us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* ---------- Global Styles ---------- */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #fde7f2, #fdd0f5);
+    color: #4a004a;
+    overflow-x: hidden;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+h2, h3, h4 {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ---------- Header ---------- */
+header {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(20px);
+    padding: 20px 25px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-size: 36px;
+    font-weight: 800;
+    background: linear-gradient(90deg,#ec407a,#f48fb1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+nav ul li a {
+    text-decoration: none;
+    color: #4a004a;
+    font-weight: 600;
+    position: relative;
+}
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    width: 0;
+    height: 3px;
+    background: #f48fb1;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* ---------- About Section ---------- */
+#about {
+    text-align: center;
+    padding: 80px 25px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 30px;
+    margin: 50px auto;
+    box-shadow: 0 10px 40px rgba(255,182,193,0.3);
+}
+#about h2 {
+    font-size: 52px;
+    font-weight: 800;
+    background: linear-gradient(45deg,#ec407a,#f48fb1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.subtitle {
+    font-size: 20px;
+    margin-bottom: 40px;
+    color: #9c27b0;
+}
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    text-align: left;
+}
+.about-text ul {
+    list-style: inside disc;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #4a004a;
+}
+.about-text ul li {
+    margin-bottom: 15px;
+}
+.about-image {
+    border-radius: 20px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(255,182,193,0.3);
+}
+
+/* ---------- Team Section ---------- */
+.team-section {
+    margin-top: 60px;
+    text-align: center;
+}
+.team-section h3 {
+    font-size: 32px;
+    color: #4a004a;
+    margin-bottom: 40px;
+    position: relative;
+}
+.team-section h3::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg,#ec407a,#f48fb1);
+    margin: 10px auto 0;
+}
+.team-card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.team-card {
+    background: #fff0f6;
+    border-radius: 25px;
+    padding: 25px;
+    max-width: 280px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(255,182,193,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.team-card:hover {
+    transform: translateY(-10px) rotate(-1deg);
+    box-shadow: 0 20px 40px rgba(255,182,193,0.4);
+}
+.team-card-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff;
+    margin-bottom: 15px;
+}
+.team-card h4 {
+    font-size: 22px;
+    margin-bottom: 5px;
+    color: #4a004a;
+}
+.team-card .title {
+    color: #ec407a;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+.team-card .bio {
+    list-style: inside circle;
+    color: #9c27b0;
+    font-size: 14px;
+    text-align: left;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    background: linear-gradient(135deg,#fde7f2,#fdd0f5);
+    padding: 50px 0;
+    color: #4a004a;
+    font-size: 16px;
+    border-top: 1px solid rgba(255,182,193,0.3);
+}
+footer .container {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 30px;
+    text-align: left;
+}
+footer h4 {
+    margin-bottom: 15px;
+    color: #9c27b0;
+}
+footer a {
+    text-decoration: none;
+    color: #4a004a;
+    transition: 0.3s;
+}
+footer a:hover {
+    color: #ec407a;
+    transform: scale(1.05);
+}
+footer .social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+.copyright {
+    text-align: center;
+    margin-top: 20px;
+    color: #9c27b0;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .about-text ul {
+        text-align: left;
+        padding-left: 20px;
+    }
+    footer .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Penelope</div>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="service.html">Service</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+<section id="about">
+    <div class="container">
+        <h2>About Us</h2>
+        <p class="subtitle">We celebrate beauty, confidence, and all things girly!</p>
+        <div class="about-content">
+            <div class="about-text">
+                <ul>
+                    <li><strong>Our Mission:</strong> Empower every client to feel confident and beautiful.</li>
+                    <li><strong>Our Philosophy:</strong> Beauty is about expressing your unique self.</li>
+                    <li><strong>Our Services:</strong> Hair, nails, makeup, and pampering sessions.</li>
+                    <li><strong>Our Approach:</strong> Personalized service, attention to detail, and love.</li>
+                    <li><strong>Our Vibe:</strong> Pink, glittery, happy, and magical!</li>
+                </ul>
+            </div>
+            <img src="https://placehold.co/600x400/ffb6c1/ffffff?text=Pretty+Studio" class="about-Assets" alt="Penelope Beauty Studio">
+            <img src="../Assets/our studio.webp" alt="our studio." class="team-card-image">
+        </div>
+
+        <div class="team-section">
+            <h3>Meet Our Team</h3>
+            <div class="team-card-container">
+                <div class="team-card">
+                    <img src="https://placehold.co/120x120/ffc0cb/ffffff?text=Penelope" class="team-card-image">
+                    <img src="../Assets/penelope.jpg" alt="Penelope V." class="team-card-image">
+                    <h4>Penelope V.</h4>
+                    <p class="title">Founder & Lead Artist</p>
+                    <ul class="bio">
+                        <li>15+ years experience</li>
+                        <li>Expert in bridal makeup</li>
+                        <li>Passionate & creative</li>
+                    </ul>
+                </div>
+                <div class="team-card">
+                    <img src="https://placehold.co/120x120/f48fb1/ffffff?text=Olivia" class="team-card-image">
+                    <img src="../Assets/olivia.jpg" alt="Olivia M." class="team-card-image">
+                    <h4>Olivia M.</h4>
+                    <p class="title">Senior Nail Technician</p>
+                    <ul class="bio">
+                        <li>Master of intricate nail art</li>
+                        <li>Trend-savvy and precise</li>
+                        <li>Fun and bubbly personality</li>
+                    </ul>
+                </div>
+                <div class="team-card">
+                    <img src="https://placehold.co/120x120/fc8fbf/ffffff?text=Liam" class="team-card-image">
+                    <img src="../Assets/liam.jpg" alt="Liam S." class="team-card-image">
+                    <h4>Liam S.</h4>
+                    <p class="title">Hair & Lash Specialist</p>
+                    <ul class="bio">
+                        <li>Specialist in hair and lashes</li>
+                        <li>Gentle, creative, and fun</li>
+                        <li>Loves voluminous and magical looks</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+</main>
+
+<footer>
+    <div class="container">
+        <div>
+            <h4>Penelope Beauty Studio</h4>
+            <p>Pink, magical, and full of girly vibes! Let us help you shine 💖✨</p>
+        </div>
+        <div>
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="service.html">Service</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Follow Us</h4>
+            <div class="social-links">
+                <!-- Facebook -->
+                <a href="https://www.facebook.com" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/ec407a/facebook--v1.png" alt="Facebook" width="30">
+                </a>
+                <!-- Instagram -->
+                <a href="https://www.instagram.com" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/ec407a/instagram-new.png" alt="Instagram" width="30">
+                </a>
+                <!-- Twitter -->
+                <a href="https://www.twitter.com" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/ec407a/twitter.png" alt="Twitter" width="30">
+                </a>
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/ec407a/tiktok.png" alt="TikTok" width="30">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">&copy; 2025 Penelope Beauty Studio. All rights reserved.</div>
+</footer>
+
+<style>
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+.social-links a img {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.social-links a:hover img {
+    transform: scale(1.2) rotate(10deg);
+    filter: drop-shadow(0 0 5px #f48fb1);
+}
+</style>

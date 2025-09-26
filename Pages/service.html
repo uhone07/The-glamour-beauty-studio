@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Penelope Beauty Studio - Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Reset and Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #fde7e7, #e1bee7);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        section {
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        section.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .sparkle-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="10" cy="10" r="1.5" fill="%23ff69b4"/><circle cx="50" cy="50" r="2" fill="%23ff1493"/><circle cx="90" cy="90" r="1.5" fill="%238a2be2"/><circle cx="30" cy="70" r="1.8" fill="%23ffc0cb"/><circle cx="70" cy="30" r="2" fill="%239c27b0"/></svg>');
+            background-size: 50px 50px;
+            animation: move-sparkles 100s linear infinite;
+            opacity: 1;
+        }
+
+        @keyframes move-sparkles {
+            from { background-position: 0 0; }
+            to { background-position: 500px 500px; }
+        }
+
+        .logo-font {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            color: #4a004a;
+            background: linear-gradient(90deg, #4a004a, #9c27b0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .button {
+            background: linear-gradient(45deg, #ec407a, #9c27b0);
+            color: #ffffff;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            font-size: 16px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            z-index: 0;
+            display: inline-block;
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+            z-index: -1;
+        }
+
+        .button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Header and Navigation - Glassmorphism Effect */
+        header {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+        }
+
+        .logo {
+            font-size: 38px;
+            font-weight: 800;
+            color: #ec407a;
+            display: flex;
+            align-items: center;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo-sparkle {
+            margin-left: 10px;
+            width: 35px;
+            height: 35px;
+            fill: #9c27b0;
+            animation: pulse-grow 1.5s infinite ease-in-out;
+        }
+
+        @keyframes pulse-grow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 35px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #4a004a;
+            font-weight: 600;
+            transition: color 0.3s, transform 0.3s;
+            position: relative;
+            font-size: 18px;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -5px;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ec407a, #9c27b0);
+            transform: translateX(-50%);
+            transition: width 0.4s ease-in-out;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Services Section */
+        #services {
+            text-align: center;
+            padding: 100px 25px;
+            background: #fff;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.05);
+            border-radius: 30px;
+            margin: 50px auto;
+        }
+
+        #services h2 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ec407a, #9c27b0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #services p.subtitle {
+            font-size: 22px;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            color: #666;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: #fce4ec;
+            padding: 24px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .service-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .service-card .icon-container {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ec407a, #9c27b0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 18px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .icon-container {
+            transform: rotate(15deg);
+        }
+
+        .service-card .icon {
+            width: 48px;
+            height: 48px;
+            fill: #fff;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #4a004a;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
+        /* Footer styles - NEW DESIGN */
+        footer {
+            background: linear-gradient(135deg, #f0d5ef, #d495e8);
+            padding: 60px 0;
+            color: #4a004a;
+            font-size: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        footer .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 32px;
+            font-weight: 800;
+            color: #4a004a;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #4a004a, #9c27b0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-heading {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #6a0572;
+            position: relative;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, #ec407a, #9c27b0);
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        footer ul li {
+            margin-bottom: 10px;
+        }
+
+        footer ul li a,
+        footer .contact-info p {
+            text-decoration: none;
+            color: #555;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+        footer ul li a:hover {
+            color: #ec407a;
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            color: #6a0572;
+            font-size: 24px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ec407a;
+            transform: scale(1.1);
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            padding-top: 20px;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container { padding: 0 20px; }
+            #services h2 { font-size: 48px; }
+        }
+
+        @media (max-width: 768px) {
+            #services h2 { font-size: 36px; }
+            #services p.subtitle { font-size: 18px; }
+            .services-grid { grid-template-columns: 1fr; }
+            footer .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-heading::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sparkle-bg" aria-hidden="true"></div>
+
+    <header>
+        <div class="container">
+            <div class="logo logo-font">
+                Penelope
+                <svg class="logo-sparkle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 0L9.5 8L0 9.5L8 12L9.5 21.5L12 13.5L20 12L12 9.5L14.5 0ZM15 15.5L13.5 17L12 18.5L10.5 17L9 15.5L10.5 14L12 12.5L13.5 14L15 15.5Z"/>
+                </svg>
+            </div>
+            <nav aria-label="Main navigation">
+                <ul>
+                    <!-- Updated for multi-page navigation -->
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="aboutus.html">aboutus</a></li>
+                    <li><a href="service.html">service</a></li>
+                    <li><a href="contact.html">contact</a></li>
+                    <li><a href="https://your-booking-link.com" class="button">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Services Section -->
+        <section id="services">
+            <div class="container">
+                <h2>Our Services</h2>
+                <p class="subtitle">Experience the finest in beauty treatments, tailored to enhance your natural glow and style.</p>
+
+                <div class="services-grid">
+                    <!-- 1 - Manicure -->
+                    <div class="service-card">
+                        <img src="../Assets/MANICURE.jpg" alt="Manicure & Pedicure" class="Service-img">
+                        <div class="price-tag">R170</div>
+                        <div class="icon-container" aria-hidden="true">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M7 21a2 2 0 0 1-2-2v-1a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2z"/>
+                                <path d="M17 14V4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v10"/>
+                                <line x1="12" x2="12" y1="2" y2="4"/>
+                                <path d="M19 19a7 7 0 0 0-14 0"/>
+                            </svg>
+                        </div>
+                        <h3>Manicure & Pedicure</h3>
+                        <p>Detailed nail care for a flawless, long-lasting finish. Choose from a wide range of colors and artistic designs.</p>
+                    </div>
+
+                    <!-- 2 - Lash Extensions -->
+                    <div class="service-card">
+                        <img src="../Assets/LASHEXTENSION.jpg" alt=" Lash Extensions" class="service-img">
+                        <div class="price-tag">R200</div>
+                        <div class="icon-container" aria-hidden="true">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 2a9 9 0 0 0-2.3 17.7l-2.6 1.8a1 1 0 0 0-.1 1.6l1.2 1.2a1 1 0 0 0 1.6-.1l1.8-2.6A9 9 0 0 0 12 2z"/>
+                                <path d="M12 11.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5z"/>
+                            </svg>
+                        </div>
+                        <h3>Lash Extensions</h3>
+                        <p>Enhance your eyes with beautiful, natural-looking lash extensions. Our certified artists will craft the perfect look for you.</p>
+                    </div>
+
+                    <!-- 3 - Professional Makeup -->
+                    <div class="service-card">
+                        <img src="../Assets/MAKEUP.jpg" alt="Professional Makeup" class="service-img">
+                        <div class="price-tag">R235</div>
+                        <div class="icon-container" aria-hidden="true">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 21a9 9 0 1 0-9-9c0 3.3 1.3 6.3 3.5 8.5L4 22l.5-.5c2.2-2.2 5.2-3.5 8.5-3.5z"/>
+                                <path d="M8 8s1.5-2 4-2s4 2 4 2"/>
+                            </svg>
+                        </div>
+                        <h3>Professional Makeup</h3>
+                        <p>From a subtle day look to full-glam for a special event, our makeup artists bring out your best features.</p>
+                    </div>
+
+                    <!-- 4 - Facial Treatments -->
+                    <div class="service-card">
+                        <img src="../Assets/FACIAL TREATMENT.jpg" alt="Facial Treatments" class="service-img">
+                        <div class="price-tag">R1000</div>
+                        <div class="icon-container" aria-hidden="true">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M21 16V8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z"/>
+                                <path d="M7 12h10"/>
+                                <path d="M12 7v10"/>
+                            </svg>
+                        </div>
+                        <h3>Facial Treatments</h3>
+                        <p>Rejuvenate your skin with our custom facial treatments, designed to hydrate, clarify, and restore your natural radiance.</p>
+                    </div>
+
+                    <!-- 5 - Hair Styling -->
+                    <div class="service-card">
+                        <img src="../Assets/HAIRBOHOBRAIDS.jpg" alt="Hair Styling" class="service-img">
+                        <div class="price-tag">R 350</div>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 2a5 5 0 0 0-5 5v5a5 5 0 0 0 5 5 5 5 0 0 0 5-5V7a5 5 0 0 0-5-5z"/>
+                                <path d="M12 17v5"/>
+                            </svg>
+                        <h3>Hair Styling</h3>
+                        <p>Our expert stylists will help you achieve the perfect cut, color, and style, leaving you with hair that truly shines.</p>
+                    </div>
+
+                    <!-- 6 - Body Waxing -->
+                    <div class="service-card">
+                        <img src="../Assets/BODYWAXING.webp" alt="Body Waxing" class="service-img">
+                        <div class="price-tag">R 100</div>
+                        <div class="icon-container" aria-hidden="true">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M18 10a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2z"/>
+                                <path d="M12 5a7 7 0 0 0-7 7v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4a7 7 0 0 0-7-7z"/>
+                            </svg>
+                        </div>
+                        <h3>Body Waxing</h3>
+                        <p>Smooth, flawless skin with our gentle and effective waxing services, performed with the utmost care and hygiene.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 40px;">
+                    <a href="https://your-booking-link.com" class="button cta-button">Book Your Appointment Now</a>
+                </div>
+            </div>
+        </section>
+    </main>
+<footer>
+    <div class="container">
+        <div>
+            <h4>Penelope Beauty Studio</h4>
+            <p>Pink, magical, and full of girly vibes! Let us help you shine 💖✨</p>
+        </div>
+        <div>
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="service.html">Service</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Follow Us</h4>
+            <div class="social-links">
+                <!-- Facebook -->
+                <a href="https://www.facebook.com" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/ec407a/facebook--v1.png" alt="Facebook" width="30">
+                </a>
+                <!-- Instagram -->
+                <a href="https://www.instagram.com" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/ec407a/instagram-new.png" alt="Instagram" width="30">
+                </a>
+                <!-- Twitter -->
+                <a href="https://www.twitter.com" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/ec407a/twitter.png" alt="Twitter" width="30">
+                </a>
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/ec407a/tiktok.png" alt="TikTok" width="30">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">&copy; 2025 Penelope Beauty Studio. All rights reserved.</div>
+</footer>
+
+<style>
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+.social-links a img {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.social-links a:hover img {
+    transform: scale(1.2) rotate(10deg);
+    filter: drop-shadow(0 0 5px #f48fb1);
+}
+</style>
+
+
+    <script>
+        // JavaScript for the section fade-in animation
+        const sections = document.querySelectorAll('section');
+        const options = {
+            root: null,
+            threshold: 0.1,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

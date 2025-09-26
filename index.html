@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penelope Beauty Studio - Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #fde7e7, #e1bee7);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 38px;
+            color: #ec407a;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-sparkle {
+            margin-left: 10px;
+            width: 35px;
+            height: 35px;
+            fill: #9c27b0;
+            animation: pulse-grow 1.5s infinite ease-in-out;
+        }
+
+        @keyframes pulse-grow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 35px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #4a004a;
+            font-weight: 600;
+            transition: color 0.3s, transform 0.3s;
+            font-size: 18px;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -5px;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ec407a, #9c27b0);
+            transform: translateX(-50%);
+            transition: width 0.4s ease-in-out;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .button {
+            background: linear-gradient(45deg, #ec407a, #9c27b0);
+            color: #ffffff;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            font-size: 16px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            z-index: 0;
+            display: inline-block;
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+            z-index: -1;
+        }
+
+        .button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 200px 25px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ec407a, #9c27b0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 22px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #f0d5ef, #d495e8);
+            padding: 60px 0;
+            color: #4a004a;
+            font-size: 16px;
+            text-align: center;
+
+
+        } @media (max-width: 1024px) {
+        .hero h1 { font-size: 50px; }
+        .hero p { font-size: 20px; }
+        nav ul li { margin-left: 25px; }
+    }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .hero p { font-size: 18px; }
+            nav ul li { margin-left: 20px; }
+
+            nav ul {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        nav ul li {
+            margin: 10px 0;
+        }
+
+        .hero {
+            padding: 150px 25px;
+        }
+
+        .hero h1 { font-size: 36px; }
+        .hero p { font-size: 18px; }
+    }
+
+    @media (max-width: 480px) {
+        .hero h1 { font-size: 28px; }
+        .hero p { font-size: 16px; }
+        .button { padding: 12px 25px; font-size: 14px; }
+        nav ul li a { font-size: 16px; }
+    }
+
+
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                Penelope
+                <svg class="logo-sparkle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 0L9.5 8L0 9.5L8 12L9.5 21.5L12 13.5L20 12L12 9.5L14.5 0ZM15 15.5L13.5 17L12 18.5L10.5 17L9 15.5L10.5 14L12 12.5L13.5 14L15 15.5Z"/>
+                </svg>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Pages/aboutus.html">aboutus</a></li>
+                    <li><a href="Pages/service.html">service</a></li>
+                    <li><a href="Pages/contact.html">contact</a></li>
+                    <li><a href="https://your-booking-link.com" class="button">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Welcome to Penelope Beauty Studio</h1>
+            <p>Discover the finest beauty treatments and style experiences designed just for you.</p>
+            <a href="https://your-booking-link.com" class="button">Book Your Appointment</a>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+<footer>
+    <div class="container">
+        <div>
+            <h4>Penelope Beauty Studio</h4>
+            <p>Pink, magical, and full of girly vibes! Let us help you shine 💖✨</p>
+        </div>
+        <div>
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="service.html">Service</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Follow Us</h4>
+            <div class="social-links">
+                <!-- Facebook -->
+                <a href="https://www.facebook.com" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/ec407a/facebook--v1.png" alt="Facebook" width="30">
+                </a>
+                <!-- Instagram -->
+                <a href="https://www.instagram.com" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/ec407a/instagram-new.png" alt="Instagram" width="30">
+                </a>
+                <!-- Twitter -->
+                <a href="https://www.twitter.com" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/ec407a/twitter.png" alt="Twitter" width="30">
+                </a>
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/ec407a/tiktok.png" alt="TikTok" width="30">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">&copy; 2025 Penelope Beauty Studio. All rights reserved.</div>
+</footer>
+
+<style>
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+.social-links a img {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.social-links a:hover img {
+    transform: scale(1.2) rotate(10deg);
+    filter: drop-shadow(0 0 5px #f48fb1);
+}
+</style>
